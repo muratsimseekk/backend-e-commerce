@@ -37,7 +37,7 @@ public class CategoryServiceImpl implements CategoryService{
         if (optional.isPresent()){
             return optional.get();
         }
-        throw new RuntimeException("Bu id de bir category bulunamadi . ID :" + id);
+        throw new RuntimeException("Bu id de bir Category bulunamadi . ID :" + id);
     }
 
     @Override
