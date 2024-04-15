@@ -1,15 +1,18 @@
 package com.workintech.backend.service;
 
+import com.workintech.backend.dto.CategoryResponse;
 import com.workintech.backend.entity.Category;
 
 import java.util.List;
 
 public interface CategoryService {
 
-    Category save(Category category);
-    List<Category> findAll();
-    Category findById(Long id);
-    Category delete(Long id);
+    CategoryResponse save(Category category);
+    List<CategoryResponse> findAll();
+    CategoryResponse findById(Long id);
+    CategoryResponse delete(Long id);
+
+    Category findByIdCategory(Long id);
 
 
 }
