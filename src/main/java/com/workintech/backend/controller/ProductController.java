@@ -40,10 +40,9 @@ public class ProductController {
         Category category = categoryService.findByIdCategory(categoryID);
 
         product.setCategory(category);
-        category.addProduct(product);
-
-        categoryService.save(category);
         productService.save(product);
+
+        category.addProduct(product);
 
          return ProductDtoConvertion.convertProduct(product);
     }
