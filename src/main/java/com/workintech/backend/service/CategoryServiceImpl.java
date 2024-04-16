@@ -3,11 +3,9 @@ package com.workintech.backend.service;
 import com.workintech.backend.dto.CategoryResponse;
 import com.workintech.backend.entity.Category;
 import com.workintech.backend.exception.CategoryException;
-import com.workintech.backend.factory.CategoryIDChecker;
+import com.workintech.backend.factory.GlobalIdChecker;
 import com.workintech.backend.repository.CategoryRepository;
 import com.workintech.backend.util.CategoryDtoConvertion;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -43,7 +41,7 @@ public class CategoryServiceImpl implements CategoryService{
     public CategoryResponse findById(Long id) {
         Optional<Category> optional = categoryRepository.findById(id);
 
-        CategoryIDChecker.idChecker(id);
+        GlobalIdChecker.categoryIDChecker(id);
 
         if (optional.isPresent()){
             return CategoryDtoConvertion.convertCategory(optional.get());
@@ -56,7 +54,7 @@ public class CategoryServiceImpl implements CategoryService{
     public CategoryResponse delete(Long id) {
         Optional<Category> optional = categoryRepository.findById(id);
 
-        CategoryIDChecker.idChecker(id);
+        GlobalIdChecker.categoryIDChecker(id);
 
         if (optional.isPresent()){
             categoryRepository.delete(optional.get());
@@ -69,7 +67,7 @@ public class CategoryServiceImpl implements CategoryService{
     public Category findByIdCategory(Long id) {
         Optional<Category> optional = categoryRepository.findById(id);
 
-        CategoryIDChecker.idChecker(id);
+        GlobalIdChecker.categoryIDChecker(id);
 
         if (optional.isPresent()){
             return optional.get();
