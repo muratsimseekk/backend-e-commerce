@@ -15,6 +15,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+
+
+
 public class ProductServiceImpl implements ProductService{
 
     private ProductRepository productRepository;
@@ -39,6 +42,12 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public List<ProductResponse> findAllByPriceAsc() {
         List<Product> products = productRepository.sortByPriceAsc();
+        return ProductDtoConvertion.convertProductList(products);
+    }
+
+    @Override
+    public List<ProductResponse> findAllByPriceDesc() {
+        List<Product> products=  productRepository.sortByPriceDesc();
         return ProductDtoConvertion.convertProductList(products);
     }
 

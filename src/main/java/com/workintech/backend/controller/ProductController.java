@@ -33,6 +33,10 @@ public class ProductController {
     public List<ProductResponse> findAllByPriceAsc(){
         return productService.findAllByPriceAsc();
     }
+    @GetMapping("/price:desc")
+    public List<ProductResponse> findAllByPriceDesc(){
+        return productService.findAllByPriceDesc();
+    }
 
     @GetMapping("/{id}")
     public ProductResponse findById(@PathVariable Long id){
