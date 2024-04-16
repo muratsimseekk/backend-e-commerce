@@ -33,7 +33,6 @@ public class ProductServiceImpl implements ProductService{
          return ProductDtoConvertion.convertProduct(product);
     }
 
-
     @Override
     public List<ProductResponse> findAll() {
         List<Product> products= productRepository.findAll();
@@ -48,6 +47,15 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public List<ProductResponse> findAllByPriceDesc() {
         List<Product> products=  productRepository.sortByPriceDesc();
+        return ProductDtoConvertion.convertProductList(products);
+    }
+
+
+
+    @Override
+    public List<ProductResponse> filterByName(String searchName) {
+        List<Product> products = productRepository.filterByName(searchName);
+
         return ProductDtoConvertion.convertProductList(products);
     }
 
@@ -74,6 +82,15 @@ public class ProductServiceImpl implements ProductService{
             return ProductDtoConvertion.convertProduct(optional.get());
         }
         throw new RuntimeException("Bu id de bir Product bulunamadi . ID :" + id);
+    }
+
+    @Override
+    public List<ProductResponse> filtreProduct(String sort) {
+
+        if (sort.equals("asc")){
+           return findAllByPriceAsc();
+        }
+       return findAllByPriceDesc();
     }
 
 

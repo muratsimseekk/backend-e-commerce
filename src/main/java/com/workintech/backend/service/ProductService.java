@@ -11,7 +11,11 @@ public interface ProductService {
     ProductResponse findById(Long id);
     ProductResponse delete(Long id);
 
+    List<ProductResponse> filtreProduct(String param);
+
     List<ProductResponse> findAllByPriceAsc();
 
     List<ProductResponse> findAllByPriceDesc();
+
+    List<ProductResponse> filterByName(String searchName);
 }

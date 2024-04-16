@@ -29,13 +29,15 @@ public class ProductController {
         return productService.findAll();
     }
 
-    @GetMapping("/price:asc")
-    public List<ProductResponse> findAllByPriceAsc(){
-        return productService.findAllByPriceAsc();
+
+    @GetMapping("/param")
+    public List<ProductResponse> sortProducts(@RequestParam String sort){
+        return productService.filtreProduct(sort);
     }
-    @GetMapping("/price:desc")
-    public List<ProductResponse> findAllByPriceDesc(){
-        return productService.findAllByPriceDesc();
+
+    @GetMapping("/filter?{search}")
+    public List<ProductResponse> filterByName(@PathVariable String search){
+        return productService.filterByName(search);
     }
 
     @GetMapping("/{id}")
