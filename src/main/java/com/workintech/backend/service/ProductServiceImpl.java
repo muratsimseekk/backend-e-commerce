@@ -53,8 +53,8 @@ public class ProductServiceImpl implements ProductService{
 
 
     @Override
-    public List<ProductResponse> filterByName(String searchName) {
-        List<Product> products = productRepository.filterByName(searchName);
+    public List<ProductResponse> filterByName(String filter) {
+        List<Product> products = productRepository.filterByName(filter);
 
         return ProductDtoConvertion.convertProductList(products);
     }

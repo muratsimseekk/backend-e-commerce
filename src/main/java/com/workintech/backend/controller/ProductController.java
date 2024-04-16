@@ -35,9 +35,9 @@ public class ProductController {
         return productService.filtreProduct(sort);
     }
 
-    @GetMapping("/filter?{search}")
-    public List<ProductResponse> filterByName(@PathVariable String search){
-        return productService.filterByName(search);
+    @GetMapping("/filter/param")
+    public List<ProductResponse> filterByName(@RequestParam String filter){
+        return productService.filterByName(filter);
     }
 
     @GetMapping("/{id}")
