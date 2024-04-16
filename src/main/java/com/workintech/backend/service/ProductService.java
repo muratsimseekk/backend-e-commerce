@@ -10,4 +10,6 @@ public interface ProductService {
     List<ProductResponse> findAll();
     ProductResponse findById(Long id);
     ProductResponse delete(Long id);
+
+    List<ProductResponse> findAllByPriceAsc();
 }

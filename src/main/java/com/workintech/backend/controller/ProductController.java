@@ -29,6 +29,11 @@ public class ProductController {
         return productService.findAll();
     }
 
+    @GetMapping("/price:asc")
+    public List<ProductResponse> findAllByPriceAsc(){
+        return productService.findAllByPriceAsc();
+    }
+
     @GetMapping("/{id}")
     public ProductResponse findById(@PathVariable Long id){
         return productService.findById(id);
