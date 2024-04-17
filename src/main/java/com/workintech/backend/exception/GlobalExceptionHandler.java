@@ -1,6 +1,5 @@
 package com.workintech.backend.exception;
 
-import jakarta.validation.ValidationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,15 +19,15 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(CategoryException.class)
-    public ResponseEntity<CategoryErrorResponse> handleException(CategoryException categoryException){
-        log.error("CategoryException occured ! Exception details : " + categoryException.getMessage());
+    @ExceptionHandler(CommonException.class)
+    public ResponseEntity<CommonErrorResponse> handleException(CommonException commonException){
+        log.error("CategoryException occured ! Exception details : " + commonException.getMessage());
 
-        CategoryErrorResponse categoryErrorResponse = new CategoryErrorResponse(categoryException.getHttpStatus().value(),
-                categoryException.getMessage(),
+        CommonErrorResponse commonErrorResponse = new CommonErrorResponse(commonException.getHttpStatus().value(),
+                commonException.getMessage(),
                 LocalDateTime.now());
 
-        return new ResponseEntity<>(categoryErrorResponse,categoryException.getHttpStatus());
+        return new ResponseEntity<>(commonErrorResponse, commonException.getHttpStatus());
     }
 
     @ExceptionHandler
@@ -42,13 +41,13 @@ public class GlobalExceptionHandler {
         return new ResponseEntity(errorList , HttpStatus.BAD_REQUEST);
     }
 
-    public ResponseEntity<CategoryErrorResponse> handleException(Exception exception){
+    public ResponseEntity<CommonErrorResponse> handleException(Exception exception){
         log.error("GeneralException occured ! Exception details : " + exception.getMessage());
 
-        CategoryErrorResponse categoryErrorResponse = new CategoryErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+        CommonErrorResponse commonErrorResponse = new CommonErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(),
                 exception.getMessage(),LocalDateTime.now());
 
-        return new ResponseEntity<>(categoryErrorResponse , HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(commonErrorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 
