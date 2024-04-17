@@ -1,10 +1,12 @@
 package com.workintech.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -28,6 +30,8 @@ public class User {
     @Column(name = "password")
     private String password;
 
-
+    @JsonBackReference
+    @OneToMany(cascade = CascadeType.ALL , mappedBy = "user")
+    private List<Card> cardList = new ArrayList<>();
 
 }
