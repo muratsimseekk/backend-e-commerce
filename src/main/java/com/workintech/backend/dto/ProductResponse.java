@@ -1,4 +1,4 @@
 package com.workintech.backend.dto;
 
-public record ProductResponse(Long id , String name , Double price , Long sellCount , Long stock , String description , String images , Long categoryID) {
+public record ProductResponse(Long id , String name , Double price , Long sellCount , Long stock , String description , String images , Long categoryID , Long storeID) {
 }

@@ -2,7 +2,7 @@ package com.workintech.backend.service;
 
 import com.workintech.backend.dto.ProductResponse;
 import com.workintech.backend.entity.Product;
-import com.workintech.backend.exception.CategoryException;
+import com.workintech.backend.exception.CommonException;
 import com.workintech.backend.factory.GlobalIdChecker;
 import com.workintech.backend.repository.ProductRepository;
 import com.workintech.backend.util.ProductDtoConvertion;
@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,7 +50,6 @@ public class ProductServiceImpl implements ProductService{
     }
 
 
-
     @Override
     public List<ProductResponse> filterByName(String filter) {
         List<Product> products = productRepository.filterByName(filter);
@@ -68,7 +66,7 @@ public class ProductServiceImpl implements ProductService{
         if (optional.isPresent()){
             return ProductDtoConvertion.convertProduct(optional.get());
         }
-        throw new CategoryException("Girilen id li Product bulunamadi . ID : " + id , HttpStatus.BAD_REQUEST);
+        throw new CommonException("Girilen id li Product bulunamadi . ID : " + id , HttpStatus.BAD_REQUEST);
     }
 
     @Override
@@ -90,7 +88,10 @@ public class ProductServiceImpl implements ProductService{
         if (sort.equals("asc")){
            return findAllByPriceAsc();
         }
-       return findAllByPriceDesc();
+        else if (sort.equals("desc")){
+            return findAllByPriceDesc();
+        }
+        throw new CommonException("Sort islemi icin url hatasi ." , HttpStatus.NOT_FOUND);
     }
 
 
