@@ -64,7 +64,6 @@ public class ProductController {
         productService.save(product);
 
         category.addProduct(product);
-
         store.addProduct(product);
 
          return ProductDtoConvertion.convertProduct(product);
