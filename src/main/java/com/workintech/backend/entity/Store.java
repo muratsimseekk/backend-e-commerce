@@ -35,6 +35,13 @@ public class Store {
 
     @JsonBackReference
     @OneToMany(cascade = CascadeType.ALL , mappedBy = "store")
-    private List<Product> products = new ArrayList<>();
+    private List<Product> products ;
+
+    public void addProduct(Product product){
+        if (products == null){
+            products = new ArrayList<>();
+        }
+        products.add(product);
+    }
 
 }

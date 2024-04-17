@@ -1,5 +1,6 @@
 package com.workintech.backend.controller;
 
+import com.workintech.backend.dto.StoreResponse;
 import com.workintech.backend.entity.Store;
 import com.workintech.backend.service.StoreService;
 import lombok.AllArgsConstructor;
@@ -11,29 +12,28 @@ import java.util.List;
 @RestController
 @RequestMapping("/store")
 @AllArgsConstructor
-@NoArgsConstructor
 public class StoreController {
 
     private StoreService storeService;
 
     @GetMapping("/")
-    public List<Store> findAll(){
+    public List<StoreResponse> findAll(){
         return storeService.findAll();
     }
 
     @GetMapping("/{id}")
-    public Store findById(@PathVariable Long id){
+    public StoreResponse findById(@PathVariable Long id){
         return storeService.findById(id);
     }
 
     @PostMapping("/")
-    public Store save(Store store){
+    public StoreResponse save(@RequestBody Store store){
         return storeService.save(store);
     }
 
     @DeleteMapping("/{id}")
-    public Store delete(@PathVariable Long id){
-        return storeService.findById(id);
+    public StoreResponse delete(@PathVariable Long id){
+        return storeService.delete(id);
     }
 
 }
