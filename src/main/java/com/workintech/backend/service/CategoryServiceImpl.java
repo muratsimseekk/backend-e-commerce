@@ -2,7 +2,7 @@ package com.workintech.backend.service;
 
 import com.workintech.backend.dto.CategoryResponse;
 import com.workintech.backend.entity.Category;
-import com.workintech.backend.exception.CategoryException;
+import com.workintech.backend.exception.CommonException;
 import com.workintech.backend.factory.GlobalIdChecker;
 import com.workintech.backend.repository.CategoryRepository;
 import com.workintech.backend.util.CategoryDtoConvertion;
@@ -47,7 +47,7 @@ public class CategoryServiceImpl implements CategoryService{
             return CategoryDtoConvertion.convertCategory(optional.get());
         }
 
-        throw new CategoryException("Girilen id li Category bulunamadi . ID : " + id , HttpStatus.BAD_REQUEST);
+        throw new CommonException("Girilen id li Category bulunamadi . ID : " + id , HttpStatus.BAD_REQUEST);
     }
 
     @Override
@@ -60,7 +60,8 @@ public class CategoryServiceImpl implements CategoryService{
             categoryRepository.delete(optional.get());
             return CategoryDtoConvertion.convertCategory(optional.get());
         }
-        throw new CategoryException("Bu id de bir category bulunamadi . ID :" + id , HttpStatus.BAD_REQUEST);
+
+        throw new CommonException("Bu id de bir category bulunamadi . ID :" + id , HttpStatus.BAD_REQUEST);
     }
 
     @Override
@@ -72,6 +73,6 @@ public class CategoryServiceImpl implements CategoryService{
         if (optional.isPresent()){
             return optional.get();
         }
-        throw new CategoryException("Bu id de bir category bulunamadi . ID :" + id , HttpStatus.BAD_REQUEST);
+        throw new CommonException("Bu id de bir category bulunamadi . ID :" + id , HttpStatus.BAD_REQUEST);
     }
 }
