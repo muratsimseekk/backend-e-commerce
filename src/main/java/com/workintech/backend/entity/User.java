@@ -37,6 +37,8 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL , mappedBy = "user")
     private List<Card> cardList = new ArrayList<>();
 
+    @OneToMany(cascade = CascadeType.ALL , mappedBy = "user")
+    private List<Order> orderList = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL , mappedBy = "user")
     private List<Address> addresses = new ArrayList<>();
