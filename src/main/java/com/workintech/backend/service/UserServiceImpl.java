@@ -5,6 +5,7 @@ import com.workintech.backend.entity.User;
 import com.workintech.backend.exception.CommonException;
 import com.workintech.backend.repository.UserRepository;
 import com.workintech.backend.util.UserDtoConvertion;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class UserServiceImpl implements UserService{
 
     private UserRepository userRepository;

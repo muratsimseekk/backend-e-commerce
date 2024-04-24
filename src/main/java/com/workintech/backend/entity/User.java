@@ -30,11 +30,14 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @OneToOne(cascade = CascadeType.ALL , mappedBy = "user")
+    private Store store;
+
     @JsonBackReference
     @OneToMany(cascade = CascadeType.ALL , mappedBy = "user")
     private List<Card> cardList = new ArrayList<>();
 
-    @JsonBackReference
+
     @OneToMany(cascade = CascadeType.ALL , mappedBy = "user")
     private List<Address> addresses = new ArrayList<>();
 }
