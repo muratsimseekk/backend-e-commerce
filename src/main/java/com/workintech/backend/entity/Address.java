@@ -42,4 +42,6 @@ public class Address {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @OneToOne(cascade = {CascadeType.DETACH , CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH} , mappedBy = "address")
+    private Order order;
 }
