@@ -31,7 +31,7 @@ public class CardController {
     @PostMapping("/{userID}")
     public CardResponse save(@RequestBody Card card , @PathVariable Long userID){
 
-        User user = userService.findById(userID);
+        User user = userService.findByUserId(userID);
 
         card.setUser(user);
 
