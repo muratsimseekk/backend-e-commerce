@@ -1,18 +1,17 @@
 package com.workintech.backend.service;
 
 
+import com.workintech.backend.dto.AddressResponse;
 import com.workintech.backend.entity.Address;
 
 import java.util.List;
 
 public interface AddressService {
 
-    List<Address> findAll();
-    Address findById(Long id);
+    List<AddressResponse> findAll();
+    AddressResponse findById(Long id);
+    AddressResponse save(Address address) ;
+    AddressResponse delete(Long id);
 
-    Address save(Address address) ;
-
-    Address delete(Long id);
-
-
+    Address findByAddressId(Long id);
 }
