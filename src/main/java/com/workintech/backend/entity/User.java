@@ -34,4 +34,7 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL , mappedBy = "user")
     private List<Card> cardList = new ArrayList<>();
 
+    @JsonBackReference
+    @OneToMany(cascade = CascadeType.ALL , mappedBy = "user")
+    private List<Address> addresses = new ArrayList<>();
 }
