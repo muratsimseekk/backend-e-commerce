@@ -33,6 +33,10 @@ public class Store {
     @Column(name = "bank_account")
     private Long bankAccount;
 
+    @OneToOne(cascade = {CascadeType.DETACH , CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REFRESH})
+    @JoinColumn(name = "user_id")
+    private User user;
+
     @JsonBackReference
     @OneToMany(cascade = CascadeType.ALL , mappedBy = "store")
     private List<Product> products ;
